@@ -1,7 +1,31 @@
-@(message: String)
+@(todoTasks: List[Task])
 
-@main("Welcome to Play 2.1") {
+@main("calendar manager") {
+    <header>
+    	<hgroup>
+    		<h1>Calendar</h1>
+    		<h2>Tasks for week ___</h2>
+    	</hgroup>
+    </header>
     
-    @play20.welcome(message, style = "Java")
-    
+    <article class="tasks">
+    	@todoTasks.groupBy(_.date).map	{
+    		case (date, tasks)	=>	{
+    			<div class="date">
+    				<header>
+    					<h3>@date</h3>
+    				</header>
+    				<ul class="list">
+    					@tasks.map	{task =>
+    						<li data-task-id="@task.id">
+    							<h4>@task.desc</h4>
+    							<time datetime = "@task.date">
+    								@task.date.format("MM dd yyyy")</time>
+    						</li>
+    					}
+    				</ul>
+    			</div>
+    		}
+    	}
+    </article>
 }
