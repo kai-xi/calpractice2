@@ -10,6 +10,8 @@ import play.mvc.Result;
 
 import javax.persistence.*;
 
+import controllers.CalSecurity;
+
 @Entity
 public class Task extends Model	{
 	@Id
@@ -36,15 +38,14 @@ public class Task extends Model	{
 	public User owner;
 	
 	public static Model.Finder<Long,Task> find = new Model.Finder(Long.class,Task.class);
-	
-	public static Task create(Task task, String user)	{
-		task.owner = User.find.ref(user);
-		task.save();
-		return task;
-	}
     
 	public static List<Task> findTasksFor(String user)	{
 		return Task.find.where().eq("done", false).eq("owner.email",user).findList();
+	}
+	
+	public static Task add(Task t, User u)	{
+		t.owner = u;
+		return t;
 	}
 	
 	public static Map<Integer,String> timeSlots() {

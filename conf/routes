@@ -11,5 +11,8 @@ GET		/login						controllers.Application.login()
 POST	/login						controllers.Application.authenticate()
 GET		/logout						controllers.Application.logout()
 
+GET		/tasks						controllers.Tasks.create()
+POST	/tasks						controllers.Tasks.save()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
