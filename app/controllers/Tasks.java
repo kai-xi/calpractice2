@@ -20,15 +20,15 @@ public class Tasks extends Controller	{
         System.out.println("printing user name............................");
         System.out.println(currentUser.name);
         return ok(
-            createTaskForm.render(taskForm, currentUser, Task.timeSlots())
-        );
+                createTaskForm.render(taskForm, currentUser, Task.timeSlots())
+            );
     }
 	
 	/**
      * Handle new user form submission 
      */
     public static Result save() {
-    	User owner = User.find.where().eq("email",request().username()).findUnique();
+    	User owner = User.find.where().eq("email",session().get("email")).findUnique();
         Form<Task> taskForm = form(Task.class).bindFromRequest();
         
         if(taskForm.hasErrors()) {
@@ -37,6 +37,9 @@ public class Tasks extends Controller	{
         
         Task toBeAdded = Task.add(taskForm.get(),owner);
         toBeAdded.save();
+        //System.out.println("date");
+        //System.out.println(toBeAdded.date.toString());
+        System.out.format("start time %d",toBeAdded.startTime);
         flash("success", taskForm.get().desc + " has been added for " + owner.name);
         return redirect(routes.Application.index());
     }
