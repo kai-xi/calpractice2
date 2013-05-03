@@ -46,5 +46,12 @@ public class Application extends Controller {
     	}
     }
     
+    public static Result logout()	{
+    	session().clear();
+    	// flash similar to session but scope lasts only until next request
+    	flash("success","Logging out");
+    	return redirect(routes.Application.login());
+    }
+    
     
 }
