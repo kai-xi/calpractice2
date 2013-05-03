@@ -25,6 +25,7 @@ public class Application extends Controller {
 		}
 	}
 	
+	@Security.Authenticated(CalSecurity.class)
     public static Result index() {
         return ok(index.render(Task.find.all()));
     }
@@ -39,6 +40,7 @@ public class Application extends Controller {
     		return badRequest(login.render(loginForm));
     	}	else	{
     		session().clear();
+    		// create a session with an email attribute, will fetch this attribute
     		session("email",loginForm.get().email);
     		return redirect(routes.Application.index());
     	}
