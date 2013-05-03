@@ -27,7 +27,14 @@ public class Application extends Controller {
 	
 	@Security.Authenticated(CalSecurity.class)
     public static Result index() {
-        return ok(index.render(Task.find.all()));
+		/*
+		 * Task.findTasksFor(String userEmail)
+		 * play.mvc.Http.Context.request() returns the current request, a play.Http.Request instance.
+		 * play.Http.Request.username() returns the username for the request.
+		 * 
+		 * Model.Finder.byId() returns an instance of that model byId
+		 */
+        return ok(index.render(Task.findTasksFor(request().username()),User.find.byId(request().username())));
     }
     
     public static Result login()	{
@@ -51,7 +58,5 @@ public class Application extends Controller {
     	// flash similar to session but scope lasts only until next request
     	flash("success","Logging out");
     	return redirect(routes.Application.login());
-    }
-    
-    
+    }    
 }
