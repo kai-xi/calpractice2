@@ -29,6 +29,7 @@ public class Task extends Model	{
 	public Date date;
 	
 	@Constraints.Required
+	//@Formats.NonEmpty("pattern")
 	public String start;
 	
 	public int startTime;
@@ -65,8 +66,27 @@ public class Task extends Model	{
 	public static Task add(Task t, User u, String start, String end)	{
 		t.owner = u;
 		// convert start, end to int types
-		
+		int startTime = convertTimeToInt(start);
+		int endTime = convertTimeToInt(end);
+		t.startTime = startTime;
+		t.endTime = endTime;
 		return t;
+	}
+	
+	private static int convertTimeToInt(String formInput)	{
+		String[] data = formInput.split(" ");
+		String[] hourAndMin = data[0].split(":");
+		int hourData = Integer.parseInt(hourAndMin[0]);
+		int minData = Integer.parseInt(hourAndMin[1]);
+		int result = 0;
+		
+		if (data[1].equals("pm"))	{
+			result += 60*12;
+		}
+		
+		result += 60*hourData;
+		result += minData;
+		return result;
 	}
 	
 	public static Map<Integer,String> timeSlots() {

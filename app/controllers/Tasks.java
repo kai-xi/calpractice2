@@ -39,14 +39,14 @@ public class Tasks extends Controller	{
         System.out.println("inside controllers.Tasks.save");
         System.out.println(start);
         System.out.println(end);
-        /*
+        
         Task toBeAdded = Task.add(taskForm.get(),owner, start, end);
         toBeAdded.save();
         System.out.println("date");
         System.out.println(toBeAdded.date.toString());
         System.out.format("start time %d",toBeAdded.startTime);
-        flash("success", taskForm.get().desc + " has been added for " + owner.name);
-        */
+        flash("success", taskForm.get().title + " has been added for " + owner.name);
+        
         return redirect(routes.Application.index());
     }
 }
