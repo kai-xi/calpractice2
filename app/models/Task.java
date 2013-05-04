@@ -1,25 +1,46 @@
 package models;
-import static play.data.Form.form;
 
 import java.util.*;
 
-import play.data.Form;
-import play.data.format.Formats;
-import play.db.ebean.*;
-import play.mvc.Result;
-
 import javax.persistence.*;
 
-import controllers.CalSecurity;
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+
+import play.db.ebean.*;
+import play.db.ebean.Model.Finder;
+import play.data.format.*;
+import play.data.validation.*;
+import com.avaje.ebean.*;
+
 
 @Entity
 public class Task extends Model	{
 	@Id
-	public Long id;
-	public String desc;
-	public boolean done=false;
-	//@Formats.DateTime(pattern="MM/dd/yyyy")
+    public Long id;
+    
+    @Constraints.Required
+    public String title;
+    
+    @Constraints.Required
+    public String taskType;
+    
 	public Date date;
+	
+	@Constraints.Required
+	public String start;
+	
+	public int startTime;
+    
+    @Constraints.Required
+    public String end;
+    
+    public int endTime;
+    
+    public String place;
+    
+    public String notes;
 	/*
 	 * startTime, endTime specified by number of minutes [int] since midnight, in half hour increments
 	 * and can take one of the following values:
@@ -32,19 +53,19 @@ public class Task extends Model	{
 	 * 1110 (6:30pm), 1140 (7pm), 1170 (7:30pm), 1200 (8pm), 1230 (8:30pm), 1260 (9pm),
 	 * 1290 (9:30pm), 1320 (10pm), 1350 (10:30pm), 1380 (11pm), 1410 (11:30pm)
 	 */
-	public int startTime;
-	public int endTime;
 	@ManyToOne
 	public User owner;
 	
 	public static Model.Finder<Long,Task> find = new Model.Finder(Long.class,Task.class);
     
 	public static List<Task> findTasksFor(String user)	{
-		return Task.find.where().eq("done", false).eq("owner.email",user).findList();
+		return Task.find.where().eq("owner.email",user).findList();
 	}
 	
-	public static Task add(Task t, User u)	{
+	public static Task add(Task t, User u, String start, String end)	{
 		t.owner = u;
+		// convert start, end to int types
+		
 		return t;
 	}
 	

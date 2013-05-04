@@ -11,7 +11,7 @@ import play.data.Form.*;
 
 public class Tasks extends Controller	{
 	/**
-     * Display the new user form.
+     * Display the new task form.
      */
     public static Result create() {
         Form<Task> taskForm = form(Task.class);
@@ -20,27 +20,33 @@ public class Tasks extends Controller	{
         System.out.println("printing user name............................");
         System.out.println(currentUser.name);
         return ok(
-                createTaskForm.render(taskForm, currentUser, Task.timeSlots())
+                createTaskForm.render(taskForm, currentUser)
             );
     }
 	
 	/**
-     * Handle new user form submission 
+     * Handle new task form submission 
      */
     public static Result save() {
     	User owner = User.find.where().eq("email",session().get("email")).findUnique();
         Form<Task> taskForm = form(Task.class).bindFromRequest();
         
         if(taskForm.hasErrors()) {
-            return badRequest(createTaskForm.render(taskForm, owner, Task.timeSlots()));
+            return badRequest(createTaskForm.render(taskForm, owner));
         }
-        
-        Task toBeAdded = Task.add(taskForm.get(),owner);
+        String start = taskForm.get().start;
+        String end = taskForm.get().end;
+        System.out.println("inside controllers.Tasks.save");
+        System.out.println(start);
+        System.out.println(end);
+        /*
+        Task toBeAdded = Task.add(taskForm.get(),owner, start, end);
         toBeAdded.save();
         System.out.println("date");
         System.out.println(toBeAdded.date.toString());
         System.out.format("start time %d",toBeAdded.startTime);
         flash("success", taskForm.get().desc + " has been added for " + owner.name);
+        */
         return redirect(routes.Application.index());
     }
 }

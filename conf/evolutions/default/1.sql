@@ -5,11 +5,15 @@
 
 create table task (
   id                        bigint not null,
-  desc                      varchar(255),
-  done                      boolean,
+  title                     varchar(255),
+  task_type                 varchar(255),
   date                      timestamp,
+  start                     varchar(255),
   start_time                integer,
+  end                       varchar(255),
   end_time                  integer,
+  place                     varchar(255),
+  notes                     varchar(255),
   owner_email               varchar(255),
   constraint pk_task primary key (id))
 ;

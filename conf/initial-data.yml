@@ -18,40 +18,50 @@
 # Task
 
 - !!models.Task
-    desc:      Fix the documentation
-    done:       false
+    title:      Intro to CS
+    taskType:    Class
+    place:    MUDD 833
+    notes:    Learn about multithreading
     date:    2013-08-28
     startTime:    600
     endTime:    630
     owner: *bob
 
 - !!models.Task
-    desc:      Prepare the beta release
-    done:       false
+    title:      Calendar manager project
+    taskType:    Project
+    place:    study lounge
+    notes:    finish next feature
     date:    2013-11-18
     startTime:    1170
     endTime:    1260
     owner: *bob
 
 - !!models.Task
-    desc:      Buy some milk
-    done:       false
+    title:      Buy some milk
+    taskType:    Errand
+    place:    the grocery store
+    notes:
     date:    2013-11-18
     startTime:    420
     endTime:    510
     owner: *jane
 
 - !!models.Task
-    desc:      Check 1.2.4-RC2
-    done:       false
+    title:      Gala
+    taskType:    Activity/Event
+    place:    Fancy Ballroom
+    notes:    wear a dress
     date:    2013-11-18
     startTime:    780
     endTime:    840
     owner: *jane
 
 - !!models.Task
-    desc:      Finish zentask integration
-    done:       true
+    title:      Discrete Math
+    taskType:    Class
+    place:    NWC
+    notes:    exam next Wed
     date:    2012-11-19
     startTime:    780
     endTime:    840

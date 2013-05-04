@@ -34,6 +34,9 @@ public class Application extends Controller {
 		 * 
 		 * Model.Finder.byId() returns an instance of that model byId
 		 */
+		User currentUser = User.find.where().eq("email",session().get("email")).findUnique();
+		System.out.println("inside Application.index");
+		System.out.println(currentUser.email);
         return ok(index.render(Task.findTasksFor(request().username()),User.find.byId(request().username())));
     }
     

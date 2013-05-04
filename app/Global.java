@@ -18,7 +18,7 @@ public class Global extends GlobalSettings {
 			Ebean.save((List) all);
 		}
 		for (Task t:Task.find.all())	{
-			String desc = t.desc;
+			String desc = t.title;
 			System.out.println(desc);
 			Date d = t.date;
 			System.out.println(d.toString());

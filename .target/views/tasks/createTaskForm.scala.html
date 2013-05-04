@@ -1,27 +1,62 @@
-@(taskForm: Form[Task], user: User)(timeSlots: Map[Integer,String])
+@(taskForm: Form[Task], user: User)
 
 @import helper._
 @implicitFieldConstructor = @{FieldConstructor(twitterBootstrapInput.render) } 
 
-@main("calendar manager", user) {
+@main("On the DOT! -- Create a New Task", user) {
     
     <h1>Add a task</h1>
     
     @form(routes.Tasks.save) {
+        @inputText(
+    		taskForm("title"),
+    		'_label -> "Task"
+    	)
+    	
+    	@select(
+            field = taskForm("taskType"), 
+            options = options(
+                "" -> "Select one:",
+                "Class" -> "Class",
+                "Work" -> "Work",
+                "Project" ->  "Project",
+                "Meeting/Appointment" -> "Meeting/Appointment",
+       			"Errand" -> "Errand",
+       			"Activity/Event" -> "Activity/Event",
+       			"Other" -> "Other"
+            ),
+            '_label -> "Type"
+        )
         
-        <fieldset>
+        @inputDate(taskForm("date"), '_label -> "Date")
         
-            @inputText(taskForm("desc"), '_label -> "Describe the task")
-            @inputDate(taskForm("date"), '_label -> "Date")
+        <h4>Please follow these examples when entering start and end times:</h4>
+        <ul>
+        <li>9:10 am</li>
+        <li>11:45 pm</li>
+        </ul>
+        
+        @inputText(
+        	taskForm("start"),
+        	'_label -> "Start Time [hour:min am/pm]"
+        )
+        
+        
+        @inputText(
+        	taskForm("end"),
+        	'_label -> "End Time [hour:min am/pm] Examples: '9:10 am' , '11:45 pm'"
+        )
+        
+        @inputText(
+        	taskForm("place"),
+        	'_label -> "Place"
+        )
+        
+        @inputText(
+        	taskForm("notes"),
+        	'_label -> "Other notes"
+        )
 
-			@timeSlotSelect(
-    			taskForm("startTime"), 
-    			timeSlots,
-    			'_showConstraints -> false
-    		)
-
-        </fieldset>
-        
         <div class="actions">
             <input type="submit" value="Create this task" class="btn primary"> or 
             <a href="@routes.Application.index()" class="btn">Cancel</a> 
