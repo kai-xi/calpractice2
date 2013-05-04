@@ -18,7 +18,7 @@ public class Task extends Model	{
 	public Long id;
 	public String desc;
 	public boolean done=false;
-	@Formats.DateTime(pattern="MM/dd/yy")
+	//@Formats.DateTime(pattern="MM/dd/yyyy")
 	public Date date;
 	/*
 	 * startTime, endTime specified by number of minutes [int] since midnight, in half hour increments

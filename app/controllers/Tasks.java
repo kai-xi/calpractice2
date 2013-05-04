@@ -37,8 +37,8 @@ public class Tasks extends Controller	{
         
         Task toBeAdded = Task.add(taskForm.get(),owner);
         toBeAdded.save();
-        //System.out.println("date");
-        //System.out.println(toBeAdded.date.toString());
+        System.out.println("date");
+        System.out.println(toBeAdded.date.toString());
         System.out.format("start time %d",toBeAdded.startTime);
         flash("success", taskForm.get().desc + " has been added for " + owner.name);
         return redirect(routes.Application.index());

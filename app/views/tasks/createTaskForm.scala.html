@@ -1,8 +1,7 @@
 @(taskForm: Form[Task], user: User)(timeSlots: Map[Integer,String])
 
 @import helper._
-
-@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+@implicitFieldConstructor = @{FieldConstructor(twitterBootstrapInput.render) } 
 
 @main("calendar manager", user) {
     
@@ -13,7 +12,7 @@
         <fieldset>
         
             @inputText(taskForm("desc"), '_label -> "Describe the task")
-            
+            @inputDate(taskForm("date"), '_label -> "Date")
 
 			@timeSlotSelect(
     			taskForm("startTime"), 
@@ -25,7 +24,7 @@
         
         <div class="actions">
             <input type="submit" value="Create this task" class="btn primary"> or 
-            <a href="@routes.Tasks.create()" class="btn">Cancel</a> 
+            <a href="@routes.Application.index()" class="btn">Cancel</a> 
         </div>
         
     }
