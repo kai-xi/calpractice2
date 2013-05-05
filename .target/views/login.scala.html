@@ -2,13 +2,13 @@
 
 <html>
 	<head>
-		<title>Calendary</title>
-		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+		<title>On the DOT! -- Login</title>
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/ontheDOTicon.png")">
 		<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")
 	</head>
 	<body>
 		<header>
-			<a href="@routes.Application.index" id="logo">Calendary</a>
+			<a href="@routes.Application.index" id="logo">Home</a>
 		</header>
 		
 		@helper.form(routes.Application.authenticate)	{
@@ -33,5 +33,8 @@
 			<button type="submit">Login</button>
 		</p>
 		}
+		
+		<h2>Don't have an account?</h2>
+		<a href="@routes.Users.create()">Click here to create a new one!</a>
 	</body>
 </html>

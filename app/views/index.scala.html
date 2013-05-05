@@ -1,12 +1,18 @@
 @(todoTasks: List[Task], user: User)
 
-@main("calendar manager", user) {
+@main("On the DOT!", user) {
     <header>
+    <br>
+    <h1><a href="@routes.Planner.displayPlanner">View Planner</a></h1>
+    <h2><a href="@routes.Tasks.create()">New Task</a></h2>
+    <br>
     	<hgroup>
-    		<h1>Calendar</h2>
+    		<h1>Calendar</h1>
     		<h2>Tasks for week ___</h2>
     	</hgroup>
     </header>
+    
+
     
     <article class="tasks">
     	@todoTasks.groupBy(_.date).map	{

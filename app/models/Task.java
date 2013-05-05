@@ -26,6 +26,7 @@ public class Task extends Model	{
     @Constraints.Required
     public String taskType;
     
+    @Constraints.Required
 	public Date date;
 	
 	@Constraints.Required
@@ -102,4 +103,11 @@ public class Task extends Model	{
         options.put(4,"four");
         return options;
     }
+	
+    public static List<Task> findTasksOnDay(Date date) {
+        return find.where()
+                 .eq("date", date)
+            .findList();
+    }
+	
 }

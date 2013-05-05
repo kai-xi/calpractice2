@@ -6,12 +6,12 @@
     <head>
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/ontheDOTicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
     </head>
     <body>
     <header>
-    	<a href="@routes.Application.index" id="logo">Calendary</a>
+    	<a href="@routes.Application.index" id="logo">Home</a>
     	<dl id="user">
     		<dt>@user.name <span>(@user.email)</span)</dt>
     		<dd><a href="@routes.Application.logout()">Logout</a></dd>

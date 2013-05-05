@@ -2,16 +2,16 @@
 @import helper._
 <html>
 	<head>
-		<title>Calendary</title>
-		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon/png")">
+		<title>On the DOT! -- New User</title>
+		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/ontheDOTicon.png")">
 		<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
 	</head>
 	<body>
 		<header>
-			<a href="@routes.Application.index" id="logo">Calendary</a>
+			<a href="@routes.Application.index" id="logo">Home</a>
 		</header>
 		
-		<h1>Join the Calendary Club!</h1>
+		<h1>Create a new account!</h1>
 		<h2>Already a user? <a href="@routes.Application.login()">Login</a></h2>
 		
 		@form(routes.Users.save()) {
