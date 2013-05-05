@@ -20,6 +20,10 @@ public class Users extends Controller {
             createUserForm.render(userForm)
         );
     }
+    
+    // Note: we need something to make sure the user doesn't create an account with the same user name and email.
+    // however... maybe we ought to use username as an id instead of email?
+    // unless we just want to ask for their name so we can be all "Hello _NAME_!"
 	
 	/**
      * Handle new user form submission 

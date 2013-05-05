@@ -1,0 +1,74 @@
+@(tasksForDisplay: List[List[Task]], displayForm: Form[Display], user: User)
+
+@import helper._
+
+@main("On the DOT! -- Planner", user) {
+<h1>Planner:</h1>
+
+	@form(routes.Planner.displayPlanner()){
+		@inputDate(
+	        	displayForm("centerDate"),
+	        	'_label -> "View Date:"
+	        )
+	    <input type="submit" value="Set">
+	}
+
+	<h2>to-dos(s):</h2>
+	<ul>
+	
+	<h4>Previous Day</h4>
+	@for(task <- tasksForDisplay(0)){
+				<li>
+	    			<b>@task.title</b> <i>@task.taskType</i>
+	    			</br>Date: @task.date
+	    			</br>Start Time: @task.start
+	    			</br>End Time: @task.end
+	    			</br>Place: @task.place
+	    			</br>Other Notes: @task.notes
+	    			
+				</li>
+	}<br>
+	
+	<h3>Selected Day</h3>
+	@for(task <- tasksForDisplay(1)){
+				<li>
+	    			<b>@task.title</b> <i>@task.taskType</i>
+	    			</br>Date: @task.date
+	    			</br>Start Time: @task.start
+	    			</br>End Time: @task.end
+	    			</br>Place: @task.place
+	    			</br>Other Notes: @task.notes
+	    			
+				</li>
+	}<br>
+	
+	<h4>Day After</h4>
+	@for(task <- tasksForDisplay(2)){
+				<li>
+	    			<b>@task.title</b> <i>@task.taskType</i>
+	    			</br>Date: @task.date
+	    			</br>Start Time: @task.start
+	    			</br>End Time: @task.end
+	    			</br>Place: @task.place
+	    			</br>Other Notes: @task.notes
+	    			
+				</li>
+	}<br>
+	
+	<h4>2nd Day After</h4>
+	@for(task <- tasksForDisplay(3)){
+				<li>
+	    			<b>@task.title</b> <i>@task.taskType</i>
+	    			</br>Date: @task.date
+	    			</br>Start Time: @task.start
+	    			</br>End Time: @task.end
+	    			</br>Place: @task.place
+	    			</br>Other Notes: @task.notes
+	    			
+				</li>
+	}<br>
+    </ul>
+    
+    <h2><a href="@routes.Tasks.create()">Add a New Task</a></h2>
+
+}
