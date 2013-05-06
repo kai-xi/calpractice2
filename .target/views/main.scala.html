@@ -11,12 +11,18 @@
     </head>
     <body>
     <header>
-    	<a href="@routes.Application.index" id="logo">Home</a>
-    	<dl id="user">
-    		<dt>@user.name <span>(@user.email)</span)</dt>
-    		<dd><a href="@routes.Application.logout()">Logout</a></dd>
-    	</dl>
+    <div id="headerimg">
+    	<img src="assets/images/ontheDOTheaderimage.png" usemap="#logomap">
+    </div>
+    <map name="logomap">
+  		<area shape="circle" coords="230,110,95" alt="On the DOT!" href="@routes.Application.index">
+	</map>
+    <div id="user">
+    	<b>User:</b> @user.name <span>(@user.email)</span> <a href="@routes.Application.logout()">Logout</a>
+    </div>
     </header>
+    <div id="content">
         @content
+    </div>
     </body>
 </html>
