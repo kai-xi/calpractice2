@@ -13,6 +13,11 @@
 		
 		<h1>Create a new account!</h1>
 		<h2>Already a user? <a href="@routes.Application.login()">Login</a></h2>
+		@if(flash.contains("error"))	{
+			<p class="error">
+				@flash.get("error")
+			</p>
+		}
 		
 		@form(routes.Users.save()) {
         
