@@ -7,11 +7,16 @@ CONSTANTS
 @darkaccent: #E63C64;
 @bgcolor: #C8C8A0;
 @white: #fff;
+@grey: #826E78;
 
-@textfont: "tahoma";
-@headingfont: "gotham condensed book";
-
-@contentwidth: 600;
+@font-face {
+font-family: 'textfont';
+src: url('/assets/fonts/Gotham-Book.ttf');
+}
+@font-face {
+font-family: 'headingfont';
+src: url('/assets/fonts/GothamCondensed-Book.otf');
+}
 
 /**********
 LAYOUT
@@ -32,7 +37,7 @@ body {
 	position: absolute;
 	top: 180px;
 	left: 60%;
-	font-family: @textfont;
+	font-family: textfont;
 	font-size: 13px;
 	color: @white;
 }
@@ -43,31 +48,97 @@ body {
 	font-style: italic;
 }
 
-#content{
-	font-family: @textfont;
-	font-size: 13 px;
+#user a:hover{
+	color: @brightaccent;
 	text-decoration: none;
+	font-style: bold italic;
+}
+
+.content{
 	position: absolute;
-	top: 230px;
+	width: 800px;
+	min-height: 600 px;
+	top: 250px;
 	left: 200px;
+	padding: 20px 20px 20px 20px;
+	background-color: @white;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-family: textfont;
+	font-size: 16 px;
+	color: @grey;
 }
 
 /********
 FONTS
 *********/
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: @headingfont;
-	font-size: 16 px;
+h1, h3, h4, h5, h6 {
+	font-family: headingfont;
 	text-transform: lowercase;
 	letter-spacing:2px;
-	color: @white;
+	color: @logocolor;
 }
 
-#content a {
-	font-family: @textfont;
-	font-size: 13 px;
-	text-decoration: none;
+h2 {
+	font-family: headingfont;
+	text-transform: lowercase;
+	letter-spacing:2px;
+	color: @bannercolor;
 }
+
+.content a {
+	font-family: textfont;
+	font-size: 16 px;
+	text-decoration: none;
+	color: @brightaccent;
+}
+
+.content a:hover {
+	font-family: textfont;
+	font-size: 16 px;
+	text-decoration: none;
+	color: @darkaccent;
+}
+
+.content b {
+	font-family: textfont;
+	font-size: 16 px;
+	color: @logocolor;
+}
+
+/********
+BUTTONS
+Generated with: http://www.bestcssbuttongenerator.com/
+*********/
+
+.formbutton {
+    
+    background-color:#e6833c;
+    
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;
+    
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:3px 9px;
+    text-decoration:none;
+    
+    text-shadow:0px 1px 0px #8f6a51;
+    
+}
+.formbutton:hover {
+    
+    background-color:#9c5f3e;
+}
+.formbutton:active {
+    position:relative;
+    top:1px;
+}
+
 
 

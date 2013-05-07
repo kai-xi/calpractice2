@@ -1,19 +1,21 @@
 @(todoTasks: List[Task], user: User)
 
 @main("On the DOT!", user) {
-    <header>
-    <br>
-    <a href="@routes.Planner.displayPlanner"><h1>View Planner</h1></a>
-    <a href="@routes.Tasks.create()"><h2>New Task</h2></a>
-    <br>
-    	<hgroup>
-    		<h1>Calendar</h1>
-    		<h2>Tasks for week ___</h2>
-    	</hgroup>
-    </header>
     
-
+    Welcome, @user.name, to <b>On the DOT!</b>, our great web application that will
+    help you plan out your day and build schedules.
+    <br><br>
+    Please click one of the following links to continue.
+    <br><br>
+	<form action="@routes.Planner.displayPlanner">
+    <input type="submit" value="View Planner" class="orangebutton">
+	</form><br>
+	<form action="@routes.Tasks.create()">
+    <input type="submit" value="New Task" class="orangebutton">
+	</form><br><br>
     
+    
+<!-- We probably won't need this.
     <article class="tasks">
     	@todoTasks.groupBy(_.date).map	{
     		case (date, tasks)	=>	{
@@ -30,4 +32,6 @@
     		}
     	}
     </article>
+-->
+
 }

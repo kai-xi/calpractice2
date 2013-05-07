@@ -47,6 +47,6 @@ public class Tasks extends Controller	{
         System.out.format("start time %d",toBeAdded.startTime);
         flash("success", taskForm.get().title + " has been added for " + owner.name);
         
-        return redirect(routes.Application.index());
+        return redirect(routes.Planner.displayPlanner());
     }
 }

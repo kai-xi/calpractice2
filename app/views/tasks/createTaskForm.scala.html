@@ -29,8 +29,8 @@
         )
         
         @inputDate(taskForm("date"), '_label -> "Date")
-        
-        <h4>Please follow these examples when entering start and end times:</h4>
+        <br>
+        Please follow these examples when entering start and end times:
         <ul>
         <li>9:10 am</li>
         <li>11:45 pm</li>
@@ -56,11 +56,9 @@
         	taskForm("notes"),
         	'_label -> "Other notes"
         )
-
-        <div class="actions">
-            <input type="submit" value="Create this task" class="btn primary"> or 
-            <a href="@routes.Application.index()" class="btn">Cancel</a> 
-        </div>
+		<br>
+            <input type="submit" value="Create this task" class="formbutton"> or 
+            <a href="@routes.Application.index()">Cancel</a> 
         
     }
     

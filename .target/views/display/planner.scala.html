@@ -5,12 +5,12 @@
 @main("On the DOT! -- Planner", user) {
 <h1>Planner:</h1>
 
+	<h2>View Date:</h2>
 	@form(routes.Planner.displayPlanner()){
 		@inputDate(
 	        	displayForm("centerDate"),
-	        	'_label -> "View Date:"
-	        )
-	    <input type="submit" value="Set">
+	        	'_label -> ""
+	        ) <input type="submit" value="Set" class="formbutton">
 	}
 
 	<h2>to-dos(s):</h2>
@@ -69,6 +69,7 @@
 	}<br>
     </ul>
     
-    <h2><a href="@routes.Tasks.create()">Add a New Task</a></h2>
+    <!-- //pinkbuttonthis!!!!! -->
+    <a href="@routes.Tasks.create()">Add a New Task</a> 
 
 }

@@ -7,11 +7,16 @@ CONSTANTS
 @darkaccent: #E63C64;
 @bgcolor: #C8C8A0;
 @white: #fff;
+@grey: #826E78;
 
-@textfont: "tahoma";
-@headingfont: "gotham condensed book";
-
-@contentwidth: 600;
+@font-face {
+font-family: 'textfont';
+src: url('/assets/fonts/Gotham-Book.ttf');
+}
+@font-face {
+font-family: 'headingfont';
+src: url('/assets/fonts/GothamCondensed-Book.otf');
+}
 
 /**********
 LAYOUT
@@ -20,6 +25,7 @@ body {
 	background-color: @bgcolor;
 	background-image: url('/assets/images/ontheDOTheader_repeat.png');
 	background-repeat: repeat-x;
+	
 }
 
 #headerimg{
@@ -31,8 +37,8 @@ body {
 #user{
 	position: absolute;
 	top: 180px;
-	left: 60%;
-	font-family: @textfont;
+	left: 50%;
+	font-family: textfont;
 	font-size: 13px;
 	color: @white;
 }
@@ -43,31 +49,137 @@ body {
 	font-style: italic;
 }
 
-#content{
-	font-family: @textfont;
-	font-size: 13 px;
+#user a:hover{
+	color: @brightaccent;
 	text-decoration: none;
-	position: absolute;
-	top: 230px;
-	left: 200px;
+	font-style: bold italic;
 }
+
+.content{
+	position: relative;
+	width: 800px;
+	top: 250px;
+	left: 10%;
+	padding: 20px 50px 20px 50px;
+	background-color: @white;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	font-family: textfont;
+	font-size: 16 px;
+	color: @grey;
+}
+
+.whitespace{
+	position: relative;
+	top: 300px;
+}
+
 
 /********
 FONTS
 *********/
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: @headingfont;
-	font-size: 16 px;
+h1, h3, h4, h5, h6 {
+	font-family: headingfont;
 	text-transform: lowercase;
 	letter-spacing:2px;
-	color: @white;
+	color: @logocolor;
 }
 
-#content a {
-	font-family: @textfont;
-	font-size: 13 px;
-	text-decoration: none;
+h2 {
+	font-family: headingfont;
+	text-transform: lowercase;
+	letter-spacing:2px;
+	color: @bannercolor;
 }
+
+.content a {
+	font-family: textfont;
+	font-size: 16 px;
+	text-decoration: none;
+	color: @brightaccent;
+}
+
+.content a:hover {
+	font-family: textfont;
+	font-size: 16 px;
+	text-decoration: none;
+	color: @darkaccent;
+}
+
+.content b {
+	font-family: textfont;
+	font-size: 16 px;
+	color: @logocolor;
+}
+
+/********
+BUTTONS
+Generated with: http://www.bestcssbuttongenerator.com/
+*********/
+
+.formbutton {
+    
+    background-color:#e6833c;
+    
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;
+    border:1px solid #ffffff;
+    
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:3px 9px;
+    text-decoration:none;
+    
+    text-shadow:0px 1px 0px #8f6a51;
+    
+}
+.formbutton:hover {
+    
+    background-color:#9c5f3e;
+}
+.formbutton:active {
+    position:relative;
+    top:1px;
+}
+
+
+
+.largebutton {
+    
+    background-color:#e63c64;
+    
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;
+    
+    border:5px solid #c8c8a0;
+    
+    display:inline-block;
+    color:#ffffff;
+    font-family:arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:4px 10px;
+    text-decoration:none;
+    
+    text-shadow:0px 1px 0px #824e5a;
+    
+}
+.largebutton:hover {
+    
+    background-color:#a34158;
+}
+.largebutton:active {
+    position:relative;
+    top:1px;
+}
+
+
+
 
 
