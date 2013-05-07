@@ -12,7 +12,7 @@
 	        	'_label -> ""
 	        ) <input type="submit" value="Set" class="formbutton">
 	}
-
+	<br>
 	<h2>to-dos(s):</h2>
 	<ul>
 	
@@ -68,8 +68,10 @@
 				</li>
 	}<br>
     </ul>
+    <br>
+    <form action="@routes.Tasks.create()">
+    <input type="submit" value="Add a New Task" class="largebutton">
+	</form>
     
-    <!-- //pinkbuttonthis!!!!! -->
-    <a href="@routes.Tasks.create()">Add a New Task</a> 
 
 }

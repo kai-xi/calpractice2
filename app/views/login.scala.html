@@ -3,14 +3,20 @@
 <html>
 	<head>
 		<title>On the DOT! -- Login</title>
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/ontheDOTicon.png")">
-		<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")
 	</head>
 	<body>
 		<header>
-			<a href="@routes.Application.index" id="logo">Home</a>
+	    <div id="headerimg">
+    		<img src="assets/images/ontheDOTheaderimage.png" usemap="#logomap">
+    	</div>
+    	<map name="logomap">
+  			<area shape="circle" coords="230,110,95" alt="On the DOT!" href="@routes.Application.index">
+		</map>
 		</header>
 		
+		<div class="content">
 		@helper.form(routes.Application.authenticate)	{
 		<h1>Sign in</h1>
 		@if(form.hasGlobalErrors)	{
@@ -30,11 +36,20 @@
 			<input type="password" name="password" placeholder="Password">
 		</p>
 		<p>
-			<button type="submit">Login</button>
+			<button type="submit" class="formbutton">Login</button>
 		</p>
 		}
+		<br>
+		<h2>Don't have an account? No worries.</h2>
+		<form action="@routes.Users.create()">
+    	<input type="submit" value="Sign up!" class="largebutton">
+		</form>
+		Signing up takes less than a minute!
+		<br>
+		</div>
 		
-		<h2>Don't have an account?</h2>
-		<a href="@routes.Users.create()">Click here to create a new one!</a>
+		<div class="whitespace">
+   		<br></br>
+   		</div>
 	</body>
 </html>

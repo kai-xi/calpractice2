@@ -3,14 +3,20 @@
 <html>
 	<head>
 		<title>On the DOT! -- New User</title>
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/ontheDOTicon.png")">
-		<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
 	</head>
 	<body>
 		<header>
-			<a href="@routes.Application.index" id="logo">Home</a>
+		<div id="headerimg">
+    		<img src="assets/images/ontheDOTheaderimage.png" usemap="#logomap">
+    	</div>
+    	<map name="logomap">
+  			<area shape="circle" coords="230,110,95" alt="On the DOT!" href="@routes.Application.index">
+		</map>
 		</header>
 		
+		<div class="content">
 		<h1>Create a new account!</h1>
 		<h2>Already a user? <a href="@routes.Application.login()">Login</a></h2>
 		@if(flash.contains("error"))	{
@@ -21,19 +27,17 @@
 		
 		@form(routes.Users.save()) {
         
-        <fieldset>
-        
             @inputText(userForm("name"), '_label -> "Pick a user name")
             @inputText(userForm("email"), '_label -> "Enter your email address")
             @inputText(userForm("password"), '_label -> "Choose a password")
 
-        </fieldset>
-        
-        <div class="actions">
-            <input type="submit" value="Roll me an account!" class="btn primary"> or 
-            <a href="@routes.Users.create()" class="btn">Cancel</a> 
-        </div>
+        <br><br>
+        <input type="submit" value="Roll me an account!" class="formbutton">
 		}
+		</div>
 		
+		<div class="whitespace">
+   		<br></br>
+   		</div>
 	</body>
 </html>
