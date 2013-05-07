@@ -104,8 +104,9 @@ public class Task extends Model	{
         return options;
     }
 	
-    public static List<Task> findTasksOnDay(Date date) {
+    public static List<Task> findTasksOnDay(Date date, User user) {
         return find.where()
+        		.eq("owner", user)
                  .eq("date", date)
             .findList();
     }

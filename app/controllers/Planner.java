@@ -35,15 +35,15 @@ static Form<Display> centerForm = Form.form(Display.class);
     	Date center = cal.getTime();
 		
 		if(centerForm.hasErrors()) {
-		    return badRequest(planner.render((Display.toDisplay(center)), centerForm, currentUser));
+		    return badRequest(planner.render((Display.toDisplay(center, currentUser)), centerForm, currentUser));
 		}
 		else if(centerForm.bindFromRequest().get().centerDate == null) {
-			return ok(planner.render((Display.toDisplay(center)), centerForm, currentUser));
+			return ok(planner.render((Display.toDisplay(center, currentUser)), centerForm, currentUser));
 		}
 		else {
 			center = centerForm.bindFromRequest().get().centerDate;
 
-		    return ok(planner.render((Display.toDisplay(center)), centerForm, currentUser)); 
+		    return ok(planner.render((Display.toDisplay(center, currentUser)), centerForm, currentUser)); 
 		}
 		
 	}
