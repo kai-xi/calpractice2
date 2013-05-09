@@ -54,8 +54,7 @@ public class Tasks extends Controller	{
         System.out.println(toBeAdded.date.toString());
         System.out.format("start time %d",toBeAdded.startTime);
         System.out.format("end time %d",toBeAdded.endTime);
-        System.out.println("repeat until");
-        System.out.println(repeatUntil.toString());
+        
         flash("success", taskForm.get().title + " has been added for " + owner.name);
         return redirect(routes.Planner.displayPlanner());
     }

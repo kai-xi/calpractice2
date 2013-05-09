@@ -71,7 +71,7 @@ public class Task extends Model	{
 	public static Model.Finder<Long,Task> find = new Model.Finder(Long.class,Task.class);
     
 	public static List<Task> findTasksFor(String userEmail)	{
-		return Task.find.where().eq("owner.email",userEmail).findList();
+		return Task.find.where().eq("owner.email",userEmail).orderBy("startTime").findList();
 	}
 	
 	public static Task add(Task t, User u, String start, String end, Date d)	{
@@ -222,6 +222,7 @@ public class Task extends Model	{
     			tasksThatDay.add(t);
     		}
     	}
+    	
     	return tasksThatDay;
     }
     
