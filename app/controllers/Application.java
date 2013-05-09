@@ -61,5 +61,9 @@ public class Application extends Controller {
     	// flash similar to session but scope lasts only until next request
     	flash("success","Logging out");
     	return redirect(routes.Application.login());
-    }    
+    }
+    
+    public static String getCurrentUserEmail()	{
+    	return session().get("email");
+    }
 }

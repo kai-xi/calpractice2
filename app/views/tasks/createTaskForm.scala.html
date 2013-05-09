@@ -30,7 +30,41 @@
         
         @inputDate(taskForm("date"), '_label -> "Date")
         <br>
-        Please follow these examples when entering start and end times:
+        <b>Will this task repeat every week? If so, check the days of the week it should repeat on:</b>
+    	@checkbox(
+    		taskForm("repeatsMon"),
+    		'_label -> "Monday"
+    	)
+    	@checkbox(
+    		taskForm("repeatsTues"),
+    		'_label -> "Tuesday"
+    	)
+    	@checkbox(
+    		taskForm("repeatsWed"),
+    		'_label -> "Wednesday"
+    	)
+    	@checkbox(
+    		taskForm("repeatsThurs"),
+    		'_label -> "Thursday"
+    	)
+    	@checkbox(
+    		taskForm("repeatsFri"),
+    		'_label -> "Friday"
+    	)
+    	@checkbox(
+    		taskForm("repeatsSat"),
+    		'_label -> "Saturday"
+    	)
+    	@checkbox(
+    		taskForm("repeatsSun"),
+    		'_label -> "Sunday"
+    	)
+		@inputDate(
+	        	taskForm("repeatUntil"),
+	        	'_label -> "Repeat until:"
+	        )
+        <br>
+        <b>Please follow these examples when entering start and end times:</b>
         <ul>
         <li>9:10 am</li>
         <li>11:45 pm</li>
@@ -46,15 +80,15 @@
         	taskForm("end"),
         	'_label -> "End Time [hour:min am/pm] Examples: '9:10 am' , '11:45 pm'"
         )
-        
+        <br>
         @inputText(
         	taskForm("place"),
-        	'_label -> "Place"
+        	'_label -> "Place (Optional)"
         )
         
         @inputText(
         	taskForm("notes"),
-        	'_label -> "Other notes"
+        	'_label -> "Other notes (Optional)"
         )
 		<br>
             <input type="submit" value="Create this task" class="formbutton"> or 
