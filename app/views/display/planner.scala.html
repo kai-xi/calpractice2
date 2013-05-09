@@ -14,61 +14,97 @@
 	}
 	<br>
 	<h2>to-dos(s):</h2>
-	<ul>
-	
-	<h4>Previous Day</h4>
-	@for(task <- tasksForDisplay(0)){
-				<li>
-	    			<b>@task.title</b> <i>@task.taskType</i>
-	    			</br>Date: @task.date
-	    			</br>Start Time: @task.start
-	    			</br>End Time: @task.end
-	    			</br>Place: @task.place
-	    			</br>Other Notes: @task.notes
-	    			
-				</li>
-	}<br>
-	
+<!--  <div class="tasks">
 	<h3>Selected Day</h3>
+	@tasksForDisplay(1).groupBy(_.startTime).map{
+		case (startTime, tasks)	=>	{
+		<ul>
+    	@tasks.map{task =>
+    			<div class=@task.taskType>
+	    			<b>@task.title</b>
+	    			<br><i>@task.taskType</i>
+	    			<br>Date: @task.dateDisplayed
+	    			<br>Start Time: @task.start
+	    			<br>End Time: @task.end
+	    			<br>Place: @task.place
+	    			<br>Other Notes: @task.notes
+	    		</div><br>
+		}
+		</ul>
+		}
+    }<br><br>
+   </div> -->	
+   
+   	<table id="planner"><tr>
+   	<th><h4>Previous Day</h4></th>
+   	<th><h3>Selected Day</h3></th>
+   	<th><h4>Day After</h4></th>
+   	<th><h4>2nd Day After</h4></th>
+   	</tr><tr>
+   	<td>
+	
+	@for(task <- tasksForDisplay(0)){
+				<div class=@task.taskType>
+	    			<b>@task.title</b>
+	    			<br><i>@task.taskType</i>
+	    			<br>@task.dateDisplayed
+	    			<br>@task.start -- @task.end
+	    			<br>Place: @task.place
+	    			<br>Other Notes: @task.notes
+	    			<div align="right" style="padding-top: 5px;">@form(routes.Tasks.delete(task.id))	{
+	    				<input type="submit" value="delete" class="simpleButton">
+	    			}</div>
+	    		</div><br>
+	}
+	</td><td>
+	
 	@for(task <- tasksForDisplay(1)){
-				<li>
-	    			<b>@task.title</b> <i>@task.taskType</i>
-	    			</br>Date: @task.date
-	    			</br>Start Time: @task.start
-	    			</br>End Time: @task.end
-	    			</br>Place: @task.place
-	    			</br>Other Notes: @task.notes
-	    			
-				</li>
-	}<br>
+				<div class=@task.taskType>
+	    			<b>@task.title</b>
+	    			<br><i>@task.taskType</i>
+	    			<br>@task.dateDisplayed
+	    			<br>@task.start -- @task.end
+	    			<br>Place: @task.place
+	    			<br>Other Notes: @task.notes
+	    			<div align="right" style="padding-top: 5px;">@form(routes.Tasks.delete(task.id))	{
+	    				<input type="submit" value="delete" class="simpleButton">
+	    			}</div>
+	    		</div><br>
+	}
+	</td><td>
 	
-	<h4>Day After</h4>
 	@for(task <- tasksForDisplay(2)){
-				<li>
-	    			<b>@task.title</b> <i>@task.taskType</i>
-	    			</br>Date: @task.date
-	    			</br>Start Time: @task.start
-	    			</br>End Time: @task.end
-	    			</br>Place: @task.place
-	    			</br>Other Notes: @task.notes
-	    			
-				</li>
-	}<br>
+				<div class=@task.taskType>
+	    			<b>@task.title</b>
+	    			<br><i>@task.taskType</i>
+	    			<br>@task.dateDisplayed
+	    			<br>@task.start -- @task.end
+	    			<br>Place: @task.place
+	    			<br>Other Notes: @task.notes
+	    			<div align="right" style="padding-top: 5px;">@form(routes.Tasks.delete(task.id))	{
+	    				<input type="submit" value="delete" class="simpleButton">
+	    			}</div>
+	    		</div><br>
+	}
+	</td><td>
 	
-	<h4>2nd Day After</h4>
 	@for(task <- tasksForDisplay(3)){
-				<li>
-	    			<b>@task.title</b> <i>@task.taskType</i>
-	    			</br>Date: @task.date
-	    			</br>Start Time: @task.start
-	    			</br>End Time: @task.end
-	    			</br>Place: @task.place
-	    			</br>Other Notes: @task.notes
-	    			
-				</li>
-	}<br>
-    </ul>
-    <br>
+				<div class=@task.taskType>
+	    			<b>@task.title</b>
+	    			<br><i>@task.taskType</i>
+	    			<br>@task.dateDisplayed
+	    			<br>@task.start -- @task.end
+	    			<br>Place: @task.place
+	    			<br>Other Notes: @task.notes
+	    			<div align="right" style="padding-top: 5px;">@form(routes.Tasks.delete(task.id))	{
+	    				<input type="submit" value="delete" class="simpleButton">
+	    			}</div>
+	    		</div><br>
+	}
+	</td>
+	</tr></table>
+    
+    <br><br>
     <form action="@routes.Tasks.create()">
     <input type="submit" value="Add a New Task" class="largebutton">
 	</form>

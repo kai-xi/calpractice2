@@ -99,14 +99,16 @@ h2 {
 h3 {
 	font-family: textfont;
 	font-size: 20px;
-	text-transform: lowercase;
+	text-transform: none;
+	letter-spacing:-2px;
 	color: @brightaccent;
 }
 
 h4 {
 	font-family: textfont;
 	font-size: 18px;
-	text-transform: lowercase;
+	text-transform: none;
+	letter-spacing:-2px;
 	color: @darkaccent;
 }
 
@@ -197,6 +199,118 @@ Generated with: http://www.bestcssbuttongenerator.com/
 .largebutton:active {
     position:relative;
     top:1px;
+}
+
+
+.simpleButton {
+ 	background-color:#ffffff;
+    
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    border-radius:20px;
+    border:1px solid #ffffff;
+    display:inline-block;
+    color:#ff416d;
+    font-family:Arial;
+    font-size:10px;
+    font-weight:bold;
+    padding:0px 5px;
+    text-decoration:none;
+    
+}
+.simpleButton:hover {
+	background-color:#ebebeb;
+	border:1px solid #ebebeb;
+}
+.simpleButton:active {
+    position:relative;
+    top:1px;
+}
+
+/*********
+PLANNER
+**********/
+
+#planner td{
+	width: 180px;
+	position:relative;
+	vertical-align:top;
+	padding:10px;
+}
+
+#planner th{
+	text-align: left;
+	padding:5px;
+}
+
+
+/*********
+TASK TYPES
+**********/
+#planner b{
+	font-size: 18px;
+	color: @white;
+}
+
+#planner{
+	font-size: 14px;
+	color: @white;
+}
+
+.Class {
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #78C27F;
+}
+
+.Work {
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #6F85AF;
+}
+
+.Project {	
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #946E81;
+}
+
+.Meeting {
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #E9B356;
+}
+
+.Errand {
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #D15D4E;
+}
+
+.Event {
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #CC6699;
+}
+
+.Other {	
+	width: 160px;
+	padding: 10px 10px 10px 10px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	background-color: #909090;
 }
 
 

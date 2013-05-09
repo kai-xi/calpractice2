@@ -57,11 +57,11 @@ public class Tasks extends Controller	{
         System.out.println("repeat until");
         System.out.println(repeatUntil.toString());
         flash("success", taskForm.get().title + " has been added for " + owner.name);
-        return redirect(routes.Application.index());
+        return redirect(routes.Planner.displayPlanner());
     }
     
     public static Result delete(Long id) {
         Task.delete(id);
-        return redirect(routes.Application.index());
+        return redirect(routes.Planner.displayPlanner());
     }
 }

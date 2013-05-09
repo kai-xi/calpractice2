@@ -12,9 +12,27 @@
 	        	'_label -> ""
 	        ) <input type="submit" value="Set" class="formbutton">
 	}
-
+	<br>
 	<h2>to-dos(s):</h2>
 	<ul>
+	
+	<h4> New Previous Day</h4>
+	@tasksForDisplay(0).groupBy(_.startTime).map{
+		case (startTime, tasks)	=>	{
+    	@for(task <- tasks){
+				<li>
+	    			<b>@task.title</b> <i>@task.taskType</i>
+	    			</br>Date: @task.date
+	    			</br>Start Time: @task.start
+	    			</br>End Time: @task.end
+	    			</br>Place: @task.place
+	    			</br>Other Notes: @task.notes
+	    			
+				</li>
+		}
+		}
+    }<br><br>
+   
 	
 	<h4>Previous Day</h4>
 	@for(task <- tasksForDisplay(0)){
@@ -68,8 +86,10 @@
 				</li>
 	}<br>
     </ul>
+    <br>
+    <form action="@routes.Tasks.create()">
+    <input type="submit" value="Add a New Task" class="largebutton">
+	</form>
     
-    <!-- //pinkbuttonthis!!!!! -->
-    <a href="@routes.Tasks.create()">Add a New Task</a> 
 
 }

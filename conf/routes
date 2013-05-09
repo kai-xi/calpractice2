@@ -13,6 +13,7 @@ GET		/logout						controllers.Application.logout()
 
 GET		/tasks						controllers.Tasks.create()
 POST	/tasks						controllers.Tasks.save()
+POST	/tasks/:id/delete			controllers.Tasks.delete(id: Long)
 
 GET		/planner					controllers.Planner.displayPlanner()
 

@@ -1,5 +1,6 @@
 package models;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.persistence.*;
@@ -29,6 +30,8 @@ public class Task extends Model	{
     
     @Constraints.Required
 	public Date date;
+    
+    public String dateDisplayed;
     
     public Date repeatUntil;
     
@@ -78,8 +81,13 @@ public class Task extends Model	{
 		int endTime = convertTimeToInt(end);
 		t.startTime = startTime;
 		t.endTime = endTime;
+		t.dateDisplayed = new SimpleDateFormat("EE").format(t.date) + ", ";
+		t.dateDisplayed += new SimpleDateFormat("MM/dd/yy").format(t.date);
 		DateHelper startDateHelper = new DateHelper(d, t);
 		t.allDates.add(startDateHelper);
+		if(t.repeatUntil == null){
+			t.repeatUntil = d;
+		}
 		addRepeatingDates(t,startDateHelper.date);
 
 		return t;
@@ -110,6 +118,7 @@ public class Task extends Model	{
 		}
 	}
 
+	// repeat weekly doesn't exist anymore. fix this comment.
 	/**
 	 * Returns a Task with relevant dates for all weeks, if repeatsWeekly is set to true.
 	 * @param t The Task to update the allDates field for
