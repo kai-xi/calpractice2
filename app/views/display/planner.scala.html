@@ -1,4 +1,4 @@
-@(tasksForDisplay: List[List[Task]], displayForm: Form[Display], user: User)
+@(tasksForDisplay: List[List[Task]], displayForm: Form[Display], user: User, dateDisplayed: String)
 
 @import helper._
 
@@ -17,7 +17,7 @@
 
    	<table id="planner"><tr>
    	<th><h4>Previous Day</h4></th>
-   	<th><h3>Selected Day</h3></th>
+   	<th><h3>Selected Day:<br>@dateDisplayed</h3></th>
    	<th><h4>Day After</h4></th>
    	<th><h4>2nd Day After</h4></th>
    	</tr><tr>
@@ -27,7 +27,6 @@
 				<div class=@task.taskType>
 	    			<b>@task.title</b>
 	    			<br><i>@task.taskType</i>
-	    			<br>@task.dateDisplayed
 	    			<br>@task.start -- @task.end
 	    			<br>Place: @task.place
 	    			<br>Other Notes: @task.notes
@@ -42,7 +41,6 @@
 				<div class=@task.taskType>
 	    			<b>@task.title</b>
 	    			<br><i>@task.taskType</i>
-	    			<br>@task.dateDisplayed
 	    			<br>@task.start -- @task.end
 	    			<br>Place: @task.place
 	    			<br>Other Notes: @task.notes
@@ -57,7 +55,6 @@
 				<div class=@task.taskType>
 	    			<b>@task.title</b>
 	    			<br><i>@task.taskType</i>
-	    			<br>@task.dateDisplayed
 	    			<br>@task.start -- @task.end
 	    			<br>Place: @task.place
 	    			<br>Other Notes: @task.notes
@@ -72,7 +69,6 @@
 				<div class=@task.taskType>
 	    			<b>@task.title</b>
 	    			<br><i>@task.taskType</i>
-	    			<br>@task.dateDisplayed
 	    			<br>@task.start -- @task.end
 	    			<br>Place: @task.place
 	    			<br>Other Notes: @task.notes

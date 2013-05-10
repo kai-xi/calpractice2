@@ -5,6 +5,7 @@ package controllers;
 
 import static play.data.Form.form;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import play.*;
@@ -33,17 +34,21 @@ static Form<Display> centerForm = Form.form(Display.class);
     	cal.set(Calendar.SECOND,0);
     	cal.set(Calendar.MILLISECOND,0);
     	Date center = cal.getTime();
+    	
+    	String dateDisplayed = new SimpleDateFormat("EE").format(center) + ", ";
+		dateDisplayed += new SimpleDateFormat("MM/dd/yy").format(center);
 		
 		if(centerForm.hasErrors()) {
-		    return badRequest(planner.render((Display.toDisplay(center)), centerForm, currentUser));
+		    return badRequest(planner.render((Display.toDisplay(center)), centerForm, currentUser, dateDisplayed));
 		}
 		else if(centerForm.bindFromRequest().get().centerDate == null) {
-			return ok(planner.render((Display.toDisplay(center)), centerForm, currentUser));
+			return ok(planner.render((Display.toDisplay(center)), centerForm, currentUser, dateDisplayed));
 		}
 		else {
 			center = centerForm.bindFromRequest().get().centerDate;
-
-		    return ok(planner.render((Display.toDisplay(center)), centerForm, currentUser)); 
+			dateDisplayed = new SimpleDateFormat("EE").format(center) + ", ";
+			dateDisplayed += new SimpleDateFormat("MM/dd/yy").format(center);
+		    return ok(planner.render((Display.toDisplay(center)), centerForm, currentUser, dateDisplayed)); 
 		}
 		
 	}

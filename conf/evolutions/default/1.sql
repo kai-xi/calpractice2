@@ -15,7 +15,6 @@ create table task (
   title                     varchar(255),
   task_type                 varchar(255),
   date                      timestamp,
-  date_displayed            varchar(255),
   repeat_until              timestamp,
   repeats_mon               boolean,
   repeats_tues              boolean,

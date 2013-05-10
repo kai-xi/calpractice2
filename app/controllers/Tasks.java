@@ -20,8 +20,9 @@ public class Tasks extends Controller	{
 	/**
      * Display the new task form.
      */
-    public static Result create() {
+	public static Result create() {
         Form<Task> taskForm = form(Task.class);
+        System.out.println("inside Tasks.create");
         User currentUser = User.find.where().eq("email",session().get("email")).findUnique();
         System.out.println("printing user name............................");
         System.out.println(currentUser.name);
@@ -29,7 +30,7 @@ public class Tasks extends Controller	{
                 createTaskForm.render(taskForm, currentUser)
             );
     }
-	
+
 	/**
      * Handle new task form submission 
      */
@@ -38,24 +39,22 @@ public class Tasks extends Controller	{
         Form<Task> taskForm = form(Task.class).bindFromRequest();
         
         if(taskForm.hasErrors()) {
-        	System.out.println("task form has errors");
             return badRequest(createTaskForm.render(taskForm, owner));
         }
         String start = taskForm.get().start;
         String end = taskForm.get().end;
         Date date = taskForm.get().date;
-        Date repeatUntil = taskForm.get().repeatUntil;
-        Task toBeAdded = Task.add(taskForm.get(),owner, start, end, date);
-        System.out.println("ABOUT TO SAVE A TASK.");
-        System.out.println("task.allDates.size() before saving:");
-        System.out.println(toBeAdded.allDates.size());
-        toBeAdded.save();
-        System.out.println("date");
-        System.out.println(toBeAdded.date.toString());
-        System.out.format("start time %d",toBeAdded.startTime);
-        System.out.format("end time %d",toBeAdded.endTime);
+        System.out.println("inside controllers.Tasks.save");
+        System.out.println(start);
+        System.out.println(end);
         
+        Task toBeAdded = Task.add(taskForm.get(),owner, start, end, date);
+        toBeAdded.save();
+//        System.out.println("date");
+//        System.out.println(toBeAdded.date.toString());
+//        System.out.format("start time %d",toBeAdded.startTime);
         flash("success", taskForm.get().title + " has been added for " + owner.name);
+        
         return redirect(routes.Planner.displayPlanner());
     }
     
