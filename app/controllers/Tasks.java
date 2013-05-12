@@ -22,10 +22,7 @@ public class Tasks extends Controller	{
      */
 	public static Result create() {
         Form<Task> taskForm = form(Task.class);
-        System.out.println("inside Tasks.create");
         User currentUser = User.find.where().eq("email",session().get("email")).findUnique();
-        System.out.println("printing user name............................");
-        System.out.println(currentUser.name);
         return ok(
                 createTaskForm.render(taskForm, currentUser)
             );
@@ -44,15 +41,9 @@ public class Tasks extends Controller	{
         String start = taskForm.get().start;
         String end = taskForm.get().end;
         Date date = taskForm.get().date;
-        System.out.println("inside controllers.Tasks.save");
-        System.out.println(start);
-        System.out.println(end);
         
         Task toBeAdded = Task.add(taskForm.get(),owner, start, end, date);
         toBeAdded.save();
-//        System.out.println("date");
-//        System.out.println(toBeAdded.date.toString());
-//        System.out.format("start time %d",toBeAdded.startTime);
         flash("success", taskForm.get().title + " has been added for " + owner.name);
         
         return redirect(routes.Planner.displayPlanner());

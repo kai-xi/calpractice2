@@ -1,7 +1,6 @@
 @(taskForm: Form[Task], user: User)
 
 @import helper._
-@implicitFieldConstructor = @{FieldConstructor(twitterBootstrapInput.render) } 
 
 @main("On the DOT! -- New Task", user) {
     
@@ -28,7 +27,7 @@
             '_label -> "Type"
         )
         
-        @inputDate(taskForm("date"), '_label -> "Date")
+        @inputDate(taskForm("date"), '_label -> "Date (MM/dd/yyyy)")
         <br>
         <b>Will this task repeat every week? If so, check the days of the week it should repeat on:</b>
     	@checkbox(
@@ -61,7 +60,7 @@
     	)
 		@inputDate(
 	        	taskForm("repeatUntil"),
-	        	'_label -> "Repeat until:"
+	        	'_label -> "Repeat until: (MM/dd/yyyy) "
 	        )
         <br>
         <b>Please follow these examples when entering start and end times:</b>

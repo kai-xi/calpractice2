@@ -20,17 +20,13 @@ import models.*;
 public class CalSecurity extends Security.Authenticator {
 	@Override
 	public String getUsername(Context ctx)	{
-		System.out.println("inside getUsername");
 		String userEmail = ctx.session().get("email");
-		System.out.println(userEmail);
 		return ctx.session().get("email");
 	}
 	
 	@Override
 	public Result onUnauthorized(Context ctx)	{
-		System.out.println("inside onUnauthorized");
 		String userEmail = Http.Context.current().session().get("email");
-		System.out.println(userEmail);
 		return redirect(routes.Application.login());
 	}
 }

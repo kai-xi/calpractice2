@@ -29,10 +29,6 @@ public class Users extends Controller {
         );
     }
     
-    // Note: we need something to make sure the user doesn't create an account with the same user name and email.
-    // however... maybe we ought to use username as an id instead of email?
-    // unless we just want to ask for their name so we can be all "Hello _NAME_!"
-	
 	/**
      * Handle new user form submission 
      */
@@ -44,7 +40,6 @@ public class Users extends Controller {
     	try	{
     		userForm.get().save();
     	}	catch (PersistenceException primkeyNotUnique)	{
-    		System.out.println("catching PersistenceException primkeyNotUnique");
     		flash("error", "An account already exists for the email: " + userForm.get().email);
     		return badRequest(createUserForm.render(userForm));
     	}
