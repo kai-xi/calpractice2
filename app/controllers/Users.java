@@ -14,13 +14,14 @@ import views.html.users.*;
 
 /**
  * This controller handles the onboarding for new users.
- * @author EmilyChen
+ * @author Emily Chen (ec2805) & Kaixi Wu (kw2503)
  *
  */
 public class Users extends Controller {
     
 	/**
      * Display the new user form.
+     * @return an ok Result to render the createUserForm view
      */
     public static Result create() {
         Form<User> userForm = form(User.class);
@@ -31,6 +32,7 @@ public class Users extends Controller {
     
 	/**
      * Handle new user form submission 
+     * @return a bad request if the user form has errors, else a redirect to Application.login()
      */
     public static Result save() {
     	Form<User> userForm = form(User.class).bindFromRequest();

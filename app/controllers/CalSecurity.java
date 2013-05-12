@@ -7,26 +7,30 @@ import models.*;
 /**
  * This class implements an authenticator by extending the
  * Play framework's built-in Security.Authenticator.
- * When a method is annotated with @Security.Authenticated(T),
- * getUsername() retrieves the User identifier attribute (in our case, the email address) 
- * from the HTTP context (the browser's session cookie). HTTP requests without cookies are stateless
- * but when the browser sends a request with a cookie, that cookie contains session state information
- * for the server.
  * If null, the person issuing the request is not a logged in user and is redirected to
  * the login page; else, the annotated request is allowed to proceed.
- * @author EmilyChen
+ * @author Emily Chen (ec2805) & Kaixi Wu (kw2503)
  *
  */
 public class CalSecurity extends Security.Authenticator {
+	
+	/**
+	 * Retrieves the User identifier attribute (in our case, the email address) 
+	 * from the HTTP context (the browser's session cookie).
+	 * @return 
+	 */
 	@Override
 	public String getUsername(Context ctx)	{
-		String userEmail = ctx.session().get("email");
 		return ctx.session().get("email");
 	}
 	
+	/**
+	 * If getUsername() returns null, the person issuing the request is 
+	 * not a logged in user.
+	 * @return redirect to the the login() action
+	 */
 	@Override
 	public Result onUnauthorized(Context ctx)	{
-		String userEmail = Http.Context.current().session().get("email");
 		return redirect(routes.Application.login());
 	}
 }

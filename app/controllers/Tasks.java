@@ -7,7 +7,6 @@ import java.util.List;
 import play.*;
 import play.mvc.*;
 import models.*;
-import models.Display;
 import views.html.*;
 //import views.html.display.planner;
 import views.html.display.*;
@@ -16,9 +15,16 @@ import views.html.users.createUserForm;
 import play.data.*;
 import play.data.Form.*;
 
+/**
+ * The Tasks Controller creates, saves, and deletes tasks.
+ * @author Kaixi Wu (kw2503) & Emily Chen (ec2805)
+ *
+ */
 public class Tasks extends Controller	{
+	
 	/**
      * Display the new task form.
+     * @return an ok Result to render the createTaskForm view
      */
 	public static Result create() {
         Form<Task> taskForm = form(Task.class);
@@ -30,6 +36,7 @@ public class Tasks extends Controller	{
 
 	/**
      * Handle new task form submission 
+     * @return a bad request if the task form has errors, else a redirect to Planner.displayPlanner()
      */
     public static Result save() {
     	User owner = User.find.where().eq("email",session().get("email")).findUnique();
@@ -49,6 +56,11 @@ public class Tasks extends Controller	{
         return redirect(routes.Planner.displayPlanner());
     }
     
+    /**
+     * Deletes a task.
+     * @param id the Long id of the task to be deleted
+     * @return a redirect to Planner.displayPlanner()
+     */
     public static Result delete(Long id) {
         Task.delete(id);
         return redirect(routes.Planner.displayPlanner());

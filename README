@@ -1,4 +1,23 @@
-This is your new Play 2.1 application
+On the DOT!
 =====================================
 
-This file will be packaged with your application, when using `play dist`.
+Optimized for Chrome.
+
+RUN APPLICATION
+- Make a GET request for the host
+- Accept the request to apply db evolutions
+
+SIGNUP
+- Submit the user creation form.
+
+LOGIN
+- Enter your account information.
+
+ADD A TASK
+- On Firefox, the user must enter all Date fields with the string format "MM/DD/YYYY".
+- If the task does not repeat weekly, ignore checkboxes and the second date input.
+- If the task form submission succeeds, you will be redirected to the planner view. If there are errors in the task form, you will be redirected to the same task form submission page after you enter submit.
+
+VIEW PLANNER
+- Select the date to display in the planner. The planner will display the date you select, along with the previous date and the two following.
+- To delete a task that is displayed in the planner view, click the delete button for that task. If the task repeats weekly, all repeats of the task will be deleted.

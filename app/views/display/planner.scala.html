@@ -1,11 +1,11 @@
-@(tasksForDisplay: List[List[Task]], displayForm: Form[Display], user: User, dateDisplayed: String)
+@(tasksForDisplay: List[List[Task]], displayForm: Form[Planner.Display], user: User, dateDisplayed: String)
 
 @import helper._
 
 @main("On the DOT! -- Planner", user) {
 <h1>Planner:</h1>
 
-	<h2>View Date:</h2>
+	<h2>View Date: (MM/dd/yyyy)</h2>
 	@form(routes.Planner.displayPlanner()){
 		@inputDate(
 	        	displayForm("centerDate"),

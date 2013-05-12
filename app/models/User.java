@@ -11,11 +11,10 @@ import com.avaje.ebean.*;
 
 import controllers.routes;
 
-/*
- *  @Entity annotation marks this class as a managed Ebean entity.
- *  All fields of this class will be automatically persisted to the database.
- *  By extending play.db.ebean.Model, this class gets access to JPA helpers.
- *  JPA (Java Persistence API) is a Java framework for managing relational data in apps using Java Platform.
+/**
+ * The User Model stores information for session management.
+ * @author Emily Chen (ec2805) & Kaixi Wu (kw2503)
+ *
  */
 @Entity
 public class User extends Model {
@@ -23,17 +22,24 @@ public class User extends Model {
 	public String email;
 	public String name;
 	public String password;
-	// this field will be used to make queries
+	
 	public static Finder<String,User> find = new Finder<String,User>(String.class,User.class);
 	
+	/**
+	 * Sets the fields of the user.
+	 * @param email a String for the user's email
+	 * @param name a String for the user's name
+	 * @param password a String for the user's password
+	 */
 	public User(String email, String name, String password)	{
 		this.email = email;
 		this.name = name;
 		this.password = password;
 	}
 	
-	/*
+	/**
 	 * This method returns the User if the email and password submitted in the form are correct.
+	 * @return the User
 	 */
 	public static User authenticate(String email,String password)	{
 		return find.where().eq("email", email).eq("password", password).findUnique();
